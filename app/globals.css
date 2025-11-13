@@ -1,26 +1,120 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+    color: #111;
+}
+
+.results {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.result-box h2 {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0;
+}
+
+.result-box p {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #007bff;
+    margin: 5px 0 0 0;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form h3 {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-top: 10px;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    font-weight: 500;
+    gap: 5px;
+}
+
+.form input,
+.form select {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Remove default Next.js main styling */
+main {
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* Span both columns in the grid */
+    grid-column: 1 / -1;
+}
+
+.slider-container input[type="range"] {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.slider-markers {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #777;
+    padding: 0 5px;
+}
+
+.disclaimer-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.disclaimer-footer p {
+    margin: 5px 0;
+}
+
+.disclaimer-footer a {
+    color: #555; /* Slightly darker than surrounding text */
+    text-decoration: underline;
+}
+
+.disclaimer-footer a:hover {
+    color: #000;
 }
