@@ -118,3 +118,60 @@ main {
 .disclaimer-footer a:hover {
     color: #000;
 }
+
+/* --- Mobile Responsive Styles --- */
+/* Apply these styles on screens 768px or narrower */
+@media (max-width: 768px) {
+    body {
+        padding: 0; /* Full-width on mobile */
+    }
+
+    .container {
+        /* Remove shadows and padding for an app-like feel */
+        max-width: 100%;
+        padding: 15px;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh; /* Make it fill the screen */
+    }
+
+    /* Stack the form grid to 1 column */
+    .form {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack the card grid to 1 column */
+    .form-card {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    /* Stack results for better readability */
+    .results {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .result-box p {
+        font-size: 2.2rem; /* Slightly smaller to fit */
+    }
+
+    /* Make the header more compact */
+    .header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .save-feedback {
+        align-self: flex-end; /* Keep 'Saved' on the right */
+        position: absolute; /* Take it out of flow */
+        top: 20px;
+        right: 20px;
+    }
+
+    .disclaimer-footer {
+        padding-bottom: 30px; /* Add space at the very bottom */
+    }
+}
