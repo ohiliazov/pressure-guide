@@ -36,6 +36,13 @@ export const Surface = {
     SNOW: 0.5,
     WET: 0.9,
 };
+
+export const WheelDiameter = {
+    '700C': 622,
+    '650B': 584,
+    '650C': 571,
+};
+
 const RIM_WIDTH_TIERS: number[][] = [
     // [maxTireWidth, innerRimWidth]
     [22, 15],
@@ -92,7 +99,7 @@ export function calculateTirePressure(
         surface,
         wheelPosition,
         adjustTireWidth = true,
-        isKilogram = true,
+        weightUnit = 'kg',
     }: {
         systemWeight: number;
         wheelDiameter: number;
@@ -104,13 +111,13 @@ export function calculateTirePressure(
         surface: number;
         wheelPosition: number;
         adjustTireWidth?: boolean;
-        isKilogram?: boolean;
+        weightUnit?: string;
     }
 ): number {
     if (adjustTireWidth) {
         tireWidth = AdjustTireWidth(tireWidth, innerRimWidth);
     }
-    if (isKilogram) {
+    if (weightUnit === 'kg') {
         systemWeight = convertKgToLbs(systemWeight);
     }
 

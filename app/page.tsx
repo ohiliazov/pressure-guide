@@ -19,6 +19,7 @@ type State = {
     innerRimWidth: number,
     wheelDiameter: number,
     systemWeight: number,
+    weightUnit: string,
 };
 
 const defaultState: State = {
@@ -30,6 +31,7 @@ const defaultState: State = {
     innerRimWidth: 23,
     wheelDiameter: 622,
     systemWeight: 97.5,
+    weightUnit: 'kg',
 };
 
 const LOCAL_STORAGE_KEY = "pressureGuideState";
@@ -62,10 +64,13 @@ function EnumSelect({label, value, onChange, enumObject}: {
 }
 
 // Helper component for number inputs
-function NumberInput({label, value, onChange}: {
+function NumberInput({label, value, onChange, minValue, maxValue, valueStep}: {
     label: string,
     value: number,
     onChange: (value: number) => void,
+    minValue: number,
+    maxValue: number,
+    valueStep: number,
 }): ReactElement {
     return (
         <label>
@@ -74,7 +79,9 @@ function NumberInput({label, value, onChange}: {
                 type="number"
                 value={value}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(parseFloat(e.currentTarget.value) || 0)}
-                step="0.1"
+                min={minValue}
+                max={maxValue}
+                step={valueStep}
             />
         </label>
     );
@@ -150,24 +157,36 @@ export default function Home() {
             <div className="form">
                 <h3>System</h3>
                 <NumberInput
-                    label="System Weight (kg)"
+                    label="Total Weight (kg)"
                     value={state.systemWeight}
                     onChange={value => handleChange('systemWeight', value)}
+                    minValue={0}
+                    maxValue={700}
+                    valueStep={0.1}
                 />
                 <NumberInput
                     label="Tire Width (mm)"
                     value={state.tireWidth}
                     onChange={value => handleChange('tireWidth', value)}
+                    minValue={18}
+                    maxValue={132}
+                    valueStep={1}
                 />
                 <NumberInput
                     label="Inner Rim Width (mm)"
                     value={state.innerRimWidth}
                     onChange={value => handleChange('innerRimWidth', value)}
+                    minValue={15}
+                    maxValue={94}
+                    valueStep={1}
                 />
                 <NumberInput
                     label="Wheel Diameter (mm)"
                     value={state.wheelDiameter}
                     onChange={value => handleChange('wheelDiameter', value)}
+                    minValue={194}
+                    maxValue={642}
+                    valueStep={1}
                 />
 
                 <h3>Conditions</h3>
